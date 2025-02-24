@@ -1,0 +1,31 @@
+/* body{
+    background: linear-gradient(90deg, #cb8bff, #9d52ff);
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Sigmar&display=swap');
+
+*{
+    font-family: 'Karla';
+}
+
+body {
+    background: linear-gradient(135deg, #ff7a00, #d6006f, #0099d6, #9c2dff);
+    background-size: 400% 400%; /* Hace que el gradiente ocupe más espacio */
+    animation: gradientAnimation 10s ease infinite;
+    height: 100vh; /* Asegura que el fondo cubra toda la pantalla */
+    margin: 0; /* Elimina márgenes extra que pudieran afectar el diseño */
+    /* overflow: hidden; Evita scrolls adicionales */
+    position: relative; /* Asegura que el fondo no afecte el contenido */
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

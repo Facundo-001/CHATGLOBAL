@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Sigmar&display=swap');
+
+.LetterHome{
+    font-family: "Sigmar";
+}
+
+.textColor{
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+
+.textColor:hover{
+    color: #ffee00;
+    text-shadow: 0 0 10px #eeff00;
+}
+
+.boxhome {
+    position: relative; /* Necesario para posicionar el pseudo-elemento */
+    z-index: 1; /* Asegura que el contenido de la caja esté por encima del fondo */
+}
+
+.boxhome::before {
+    content: ''; /* Necesario para crear el pseudo-elemento */
+    position: absolute; /* Posiciona el pseudo-elemento dentro del contenedor */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #2a0845, #5a2caf), url('./BGCOOL-removebg-preview.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1; /* Asegura que el fondo esté detrás del contenido */
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Quita el subrayado predeterminado */
+    position: relative;
+    color: inherit; /* Mantiene el color del texto */
+    transition: all 0.3s ease-in-out;
+}
+
+.logo-container img {
+    transition: transform 0.5s ease-in-out;
+}
+
+.logo-container:hover img {
+    transform: rotate(360deg);
+}
+
+.logo-container span {
+    position: relative;
+    display: inline-block;
+    /* Animación neon en tonos grises */
+    animation: neonBlink 1.5s infinite alternate;
+}
+
+@keyframes neonBlink {
+    0% {
+        text-shadow: 0 0 3px #aaa, 0 0 6px #aaa;
+        opacity: 0.8;
+    }
+    50% {
+        text-shadow: 0 0 8px #aaa, 0 0 12px #aaa;
+        opacity: 1;
+    }
+    100% {
+        text-shadow: 0 0 3px #aaa, 0 0 6px #aaa;
+        opacity: 0.8;
+    }
+}
+
+.logo-container span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #aaa; /* Línea inferior en gris */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Al pasar el cursor, se estabiliza el efecto neon y se muestra la línea */
+.logo-container:hover span {
+    animation: none;
+    text-shadow: 0 0 10px #aaa, 0 0 15px #aaa;
+}
+
+.logo-container:hover span::after {
+    transform: scaleX(1);
+}
+
+
+    /* Fondo general */
+    .bienvenida-container {
+        width: 100%;
+        height: 100vh;
+        /* background: linear-gradient(135deg, #2a0845, #6441a5); Tonos morados */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 1rem; /* Añadir algo de espacio en pantallas pequeñas */
+    }
+    
+    /* Contenido centrado */
+    .bienvenida-content {
+        background: rgba(255, 255, 255, 0.1); /* Fondo con transparencia */
+        padding: 3rem;
+        border-radius: 15px;
+        backdrop-filter: blur(10px); /* Efecto vidrio */
+        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+        max-width: 900px;
+        width: 90%; /* Ancho relativo para que se adapte al tamaño */
+        /* max-height: 900px; */
+    }
+    
+    /* Título con efecto */
+    .fade-in {
+        font-size: 2.5rem;
+        font-weight: bold;
+        opacity: 0;
+        animation: fadeIn 1.5s ease-in-out forwards;
+    }
+    
+    .fade-in span {
+        color: #c084fc; /* Color morado claro */
+    }
+    
+    /* Texto con efecto de escritura */
+    .typing {
+        font-size: 1.5rem;
+        font-weight: 300;
+        font-style: italic;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid #c084fc; /* Cursor de escritura */
+        animation: blinkCursor 0.8s infinite;
+    }
+
+    .textoLindo{
+        font-size: 1.5rem;
+        font-weight: 300;
+        font-style: italic;
+    }
+    
+    /* Animaciones */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes blinkCursor {
+        50% {
+            border-color: transparent;
+        }
+    }
+    
+    /* Responsividad */
+    @media screen and (max-width: 768px) {
+        .bienvenida-content {
+            padding: 2rem; /* Menos espacio en móviles */
+        }
+        
+        .fade-in {
+            font-size: 2rem; /* Reducir tamaño del título */
+        }
+        
+        .typing {
+            font-size: 1.2rem; /* Reducir tamaño del texto con efecto de escritura */
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        .bienvenida-container {
+            padding: 0.5rem; /* Reducir espacio en móviles muy pequeños */
+        }
+        
+        .bienvenida-content {
+            padding: 1.5rem; /* Menos espacio */
+        }
+        
+        .fade-in {
+            font-size: 1.8rem; /* Reducir aún más el tamaño del título */
+        }
+        
+        .typing {
+            font-size: 1rem; /* Reducir aún más el texto */
+        }
+    }
+    

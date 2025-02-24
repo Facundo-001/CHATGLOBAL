@@ -1,0 +1,69 @@
+@keyframes flame-flicker {
+    0%, 100% { transform: scale(1) translateY(0); opacity: 0.8; }
+    50% { transform: scale(1.1) translateY(-10px); opacity: 1; }
+}
+
+@keyframes flicker-light {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes sparks {
+    0% { opacity: 1; transform: translateY(-20px) scale(0.8); }
+    100% { opacity: 0; transform: translateY(-60px) scale(1.2); }
+}
+
+/* 🔥 Contenedor de la fogata */
+.fireplace {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* 🔥 Llamas */
+.flame {
+    position: absolute;
+    bottom: 20px;
+    width: 100px;
+    height: 140px;
+    background: radial-gradient(circle, rgba(255, 170, 0, 0.9), rgba(255, 94, 0, 0.8), rgba(255, 0, 0, 0.6));
+    border-radius: 50% 50% 40% 40%;
+    filter: blur(8px);
+    animation: flame-flicker 1.5s infinite alternate ease-in-out;
+}
+
+.flame.small {
+    width: 80px;
+    height: 120px;
+    opacity: 0.8;
+    animation-duration: 1.2s;
+}
+
+/* 💡 Luz difusa alrededor */
+.firelight {
+    position: absolute;
+    bottom: 0;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 140, 0, 0.5);
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: -1;
+    animation: flicker-light 1s infinite alternate;
+}
+
+/* ✨ Chispas */
+.spark {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: yellow;
+    border-radius: 50%;
+    top: -10px;
+    left: 50%;
+    opacity: 0;
+    animation: sparks 1s infinite linear;
+}

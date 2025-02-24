@@ -1,0 +1,118 @@
+  /* Contenedor principal del chat */
+.chat-container {
+    max-width: 1000px;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+/* Caja de mensajes */
+.chat-box {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos generales para los mensajes */
+.message {
+    max-width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+/* Mensajes del usuario actual */
+.my-message {
+    align-self: flex-end;
+    background: #9b5bfb;
+    color: white;
+    text-align: right;
+}
+
+/* Mensajes de otros usuarios */
+.other-message {
+    align-self: flex-start;
+    background: #333;
+    color: white;
+}
+
+/* Nombre del usuario en el mensaje */
+.user-name {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 15px;
+    text-decoration: overline;
+}
+
+/* Texto del mensaje */
+.text-message {
+    margin: 5px 0;
+}
+
+/* Timestamp del mensaje */
+.timestamp {
+    font-size: 10px;
+    opacity: 0.7;
+}
+
+/* Contenedor del input y botón */
+.input-container {
+    display: flex;
+    margin-top: 10px;
+}
+
+/* Estilo del input de texto */
+.chat-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+/* Botón de enviar */
+.send-button {
+    background: #9b5bfb;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.send-button:hover {
+    background: #7e46d8;
+}
+
+
+/* Botón de eliminar mensaje */
+.option-btn {
+background: #e74c3c; /* Rojo para indicar eliminar */
+color: white;
+border: none;
+padding: 8px 15px;
+border-radius: 5px;
+cursor: pointer;
+font-size: 13px;
+transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.option-btn:hover {
+background: #c0392b; /* Un tono de rojo más oscuro */
+transform: scale(1.05); /* Efecto de agrandado al hacer hover */
+}
+
+.option-btn:focus {
+outline: none; /* Elimina el borde por defecto al hacer clic */
+}
+
+.option-btn:active {
+background: #a93226; /* Un rojo aún más oscuro cuando se hace clic */
+}
