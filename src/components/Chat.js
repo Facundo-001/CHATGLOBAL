@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import { db } from "../credenciales"; // Importar Firestore
+import { db } from "../credenciales";
 import { collection, onSnapshot, addDoc, serverTimestamp, query, orderBy, deleteDoc, doc } from "firebase/firestore";
-import { FaCaretDown } from "react-icons/fa"; // Importamos el ícono de la flechita hacia abajo
+import { FaCaretDown, FaSmile } from "react-icons/fa";
+import EmojiPicker from "emoji-picker-react";
 import "./chat.css";
 
 function Chat({ user }) {
   const [messages, setMessages] = useState([]);
   const [mensaje, setMensaje] = useState("");
-  const [showOptions, setShowOptions] = useState(null); // Estado para mostrar las opciones
-  const chatEndRef = useRef(null); // Referencia para auto-scroll
+  const [showOptions, setShowOptions] = useState(null);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const chatEndRef = useRef(null);
 
-  // Suscripción en tiempo real
   useEffect(() => {
     const colRef = collection(db, "messages");
     const q = query(colRef, orderBy("timestamp", "asc"));
@@ -26,10 +27,9 @@ function Chat({ user }) {
     return () => unsubscribe();
   }, []);
 
-  // Función para enviar mensaje
   const enviarMensaje = async (e) => {
     e.preventDefault();
-    if (!mensaje.trim()) return; // No enviar si el mensaje está vacío
+    if (!mensaje.trim()) return;
 
     try {
       await addDoc(collection(db, "messages"), {
@@ -39,33 +39,35 @@ function Chat({ user }) {
         userId: user.uid,
       });
 
-      setMensaje(""); // Limpiar el campo de texto
+      setMensaje("");
     } catch (error) {
       console.error("Error al enviar mensaje:", error);
     }
   };
 
-  // Función para eliminar un mensaje
   const eliminarMensaje = async (id) => {
     try {
       const docRef = doc(db, "messages", id);
-      await deleteDoc(docRef); // Elimina el mensaje de Firestore
-      setShowOptions(null); // Cierra el menú de opciones
+      await deleteDoc(docRef);
+      setShowOptions(null);
     } catch (error) {
       console.error("Error al eliminar mensaje:", error);
     }
   };
 
-  // Auto-scroll al último mensaje
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  const agregarEmoji = (emojiObject) => {
+    setMensaje((prev) => prev + emojiObject.emoji);
+    setShowEmojiPicker(false);
+  };
 
   return (
     <div className="chat-container p-3">
       <h2 className="text-center text-light mb-3">Chat en Vivo</h2>
 
-      {/* Lista de mensajes */}
       <div className="chat-box">
         {messages.map((msg) => (
           <div
@@ -73,8 +75,6 @@ function Chat({ user }) {
             className={`message ${msg.userId === user.uid ? "my-message" : "other-message"}`}
           >
             <p className="user-name">{msg.userName}</p>
-
-            {/* Texto del mensaje */}
             {msg.text && (
               <p className="text-message">
                 {msg.text.startsWith("http") ? (
@@ -87,7 +87,6 @@ function Chat({ user }) {
               </p>
             )}
 
-            {/* Botón para mostrar opciones */}
             {msg.userId === user.uid && (
               <div className="options-btn">
                 <FaCaretDown onClick={() => setShowOptions(showOptions === msg.id ? null : msg.id)} />
@@ -108,11 +107,28 @@ function Chat({ user }) {
             )}
           </div>
         ))}
-        <div ref={chatEndRef} /> {/* Para el auto-scroll */}
+        <div ref={chatEndRef} />
       </div>
 
-      {/* Formulario de envío */}
       <form onSubmit={enviarMensaje} className="input-container">
+      <div className="emoji-wrapper">
+        <button
+          type="button"
+          className="emoji-button btn rounded-2 text-warning"
+          onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+        >
+          {/* 🤩 logo para el emoji */}
+          <FaSmile size={30} />
+        </button>
+
+        {showEmojiPicker && (
+          <div className="emoji-picker">
+            <EmojiPicker onEmojiClick={agregarEmoji} />
+          </div>
+        )}
+      </div>
+
+
         <input
           type="text"
           placeholder="Escribe tu mensaje..."
@@ -127,7 +143,6 @@ function Chat({ user }) {
 }
 
 export default Chat;
-
 
 
 

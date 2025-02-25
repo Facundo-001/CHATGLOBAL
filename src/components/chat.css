@@ -116,3 +116,26 @@ outline: none; /* Elimina el borde por defecto al hacer clic */
 .option-btn:active {
 background: #a93226; /* Un rojo aún más oscuro cuando se hace clic */
 }
+
+/* Posicionar el wrapper relativo para que el picker se ancle a él */
+.emoji-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* El picker en posición absoluta para que no empuje el input */
+  .emoji-picker {
+    position: absolute;
+    bottom: 100%; /* Se muestra por encima del botón; si prefieres abajo, usa top: 100% */
+    left: 0;
+    z-index: 999;       /* Para que aparezca por encima de otros elementos */
+    margin-bottom: 10px; /* Espacio entre el botón y el picker */
+    max-height: 500px;   /* Limita la altura si es muy grande */
+    max-width: 400px;    /* Limita el ancho si es muy grande */
+    overflow-y: auto;    /* Añade scroll si excede la altura */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
