@@ -1,4 +1,5 @@
 import React from 'react';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Link } from "react-router-dom";
 // Si vas a usar íconos de Font Awesome, asegúrate de haber agregado
 // la dependencia o el enlace en tu index.html o donde corresponda.
@@ -29,9 +30,8 @@ const Footer = () => {
           <div className="col-md-3 mb-4">
             <h5 className="mb-3">Enlaces Rápidos</h5>
             <ul className="list-unstyled">
-              <li><a href="#" className="text-white text-decoration-none">Inicio</a></li>
-              <li><a href="#" className="text-white text-decoration-none">Características</a></li>
-              <li><a href="#" className="text-white text-decoration-none">Precios</a></li>
+              <li><Link to="/" className="text-white text-decoration-none">Inicio</Link></li>
+              <li><a href="https://mi-portfolio-ghost-facu.netlify.app" target="_blank"  className="text-white text-decoration-none">Mi Portfolio</a></li>
               <li><Link to="/Contacto" className="text-white text-decoration-none">Contacto</Link></li>
             </ul>
           </div>
@@ -46,7 +46,7 @@ const Footer = () => {
               rel="noopener noreferrer" 
               className="text-white me-2 fs-5"
             >
-              <i className="fab fa-twitter"></i>
+              <i class="fa-brands fa-discord"></i>
             </a>
             <a 
               href="https://instagram.com" 
@@ -57,12 +57,12 @@ const Footer = () => {
               <i className="fab fa-instagram"></i>
             </a>
             <a 
-              href="https://facebook.com" 
+              href="https://www.youtube.com/channel/UCRvtMPmOKIaYBk7_GQBo6hg" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-white fs-5"
             >
-              <i className="fab fa-facebook-f"></i>
+              <i class="fa-brands fa-youtube"></i>
             </a>
           </div>
           
