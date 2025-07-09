@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import DALLE from './Chatea Con Gente Del Mundo Aqui.png';
+import DALLE from './Chatea Con Gente Del Mundo Aqui.webp';
 import './Contenido.css';
 
 const ContenidoBienvenido = () => {

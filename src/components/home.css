@@ -96,3 +96,12 @@
     transform: scaleX(1);
 }
 
+@media (min-width: 1400px) {
+    .logo-img{
+        /* Intentando cambiar el tamaño del logo */
+        width: 3rem;
+    }
+    .logo-container{
+        /* NADA POR AHORA */
+    }
+}

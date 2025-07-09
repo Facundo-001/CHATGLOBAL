@@ -136,3 +136,18 @@
     color: #fff;
     font-weight: bold;
 }
+
+@media (min-width: 1400px) {
+    .bienvenida-content {
+        max-width: 80%;
+        min-height: 85%;
+        box-sizing: border-box;
+    }
+    .imagen-bienvenida {
+        margin-top: 2rem;
+        width: 75%;
+        height: auto;
+        border-radius: 13px;
+        transition: transform 0.3s;
+    }
+}
