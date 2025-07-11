@@ -1,153 +1,179 @@
 /* Fondo general */
 .bienvenida-container {
-    width: 100%;
-    height: 100vh;
-    /* background: linear-gradient(135deg, #2a0845, #6441a5); Tonos morados */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    padding: 1rem;
-    margin: 3rem 0 3rem 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #240046, #3a0ca3, #7209b7);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
 }
 
-/* Contenido centrado */
+/* Contenido centrado y estilizado */
 .bienvenida-content {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 3rem;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
-    max-width: 900px;
-    width: 90%;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  width: 100%;
+  transition: transform 0.3s ease;
 }
 
-/* Título con efecto */
+.bienvenida-content:hover {
+  transform: scale(1.01);
+}
+
+/* Título principal */
 .fade-in {
-    font-size: 2.5rem;
-    font-weight: bold;
-    opacity: 0;
-    animation: fadeIn 1.5s ease-in-out forwards;
+  font-size: 2.2rem;
+  font-weight: 700;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out forwards;
+  margin-bottom: 1rem;
 }
 
 .fade-in span {
-    color: #c084fc;
+  color: #c084fc;
+  text-shadow: 0 0 10px #c084fc88;
 }
 
 /* Texto con efecto de escritura */
 .typing {
-    font-size: 1.5rem;
-    font-weight: 300;
-    font-style: italic;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid #c084fc;
-    animation: blinkCursor 0.8s infinite;
+  font-size: 1.3rem;
+  font-weight: 300;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #c084fc;
+  animation: blinkCursor 0.8s infinite;
 }
 
 .textoLindo {
-    font-size: 1.5rem;
-    font-weight: 300;
-    font-style: italic;
+  font-size: 1.3rem;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 1rem;
 }
 
-/* Imagen de bienvenida */
+.descripcion {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.botones .btn {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  background-color: #3a0ca3;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botones .btn:hover {
+  background-color: #5f0ae3;
+  transform: translateY(-2px);
+}
+
+/* Imagen decorativa */
 .imagen-bienvenida {
-    margin-top: 2rem;
-    max-width: 100%;
-    height: auto;
-    border-radius: 13px;
-    transition: transform 0.3s;
+  margin-top: 2rem;
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  transition: transform 0.3s;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .imagen-bienvenida:hover {
-    transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 /* Animaciones */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes blinkCursor {
-    50% {
-        border-color: transparent;
-    }
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Responsividad */
 @media screen and (max-width: 768px) {
-    .bienvenida-content {
-        padding: 2rem;
-    }
-    
-    .fade-in {
-        font-size: 2rem;
-    }
-    
-    .typing {
-        font-size: 1.2rem;
-    }
-    
-    .carousel {
-        display: none;
-    }
+  .bienvenida-content {
+    padding: 1.5rem;
+  }
+
+  .fade-in {
+    font-size: 1.8rem;
+  }
+
+  .textoLindo, .typing {
+    font-size: 1.1rem;
+  }
+
+  .descripcion {
+    font-size: 0.95rem;
+  }
+
+  .imagen-bienvenida {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    .bienvenida-container {
-        padding: 0.5rem;
-    }
-    
-    .bienvenida-content {
-        padding: 1.5rem;
-    }
-    
-    .fade-in {
-        font-size: 1.8rem;
-    }
-    
-    .typing {
-        font-size: 1rem;
-    }
-    
-    .carousel {
-        display: none;
-    }
-}
+  .bienvenida-content {
+    padding: 1rem;
+  }
 
-.carousel-item img {
-    max-height: 900px;
-    object-fit: cover;
-    box-sizing: border-box;
-    margin-top: 2rem;
-    border-radius: 13px;
-}
+  .fade-in {
+    font-size: 1.6rem;
+  }
 
-.carousel-caption {
-    color: #fff;
-    font-weight: bold;
+  .textoLindo, .typing {
+    font-size: 1rem;
+  }
+
+  .descripcion {
+    font-size: 0.9rem;
+  }
 }
 
 @media (min-width: 1400px) {
-    .bienvenida-content {
-        max-width: 80%;
-        min-height: 85%;
-        box-sizing: border-box;
-    }
-    .imagen-bienvenida {
-        margin-top: 2rem;
-        width: 75%;
-        height: auto;
-        border-radius: 13px;
-        transition: transform 0.3s;
-    }
+  .bienvenida-content {
+    max-width: 60%;
+    min-height: 75%;
+  }
+
+  .imagen-bienvenida {
+    width: 80%;
+  }
 }

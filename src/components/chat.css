@@ -3,7 +3,7 @@
 /* =========================== */
 .chat-container {
   max-width: 1500px;
-  margin: auto;
+  margin: 2rem auto; /* Añadido margen vertical para separar del nav y footer */
   background: rgba(30, 30, 30, 0.85);
   backdrop-filter: blur(12px);
   border-radius: 16px;
@@ -206,7 +206,6 @@
   background-color: rgba(255, 107, 107, 0.1);
 }
 
-
 /* =========================== */
 /* 7. Emoji Picker */
 /* =========================== */
@@ -255,12 +254,6 @@
   filter: brightness(1.2);
 }
 
-/* .EmojiPickerReact .epr-category-nav button.epr-active {
-  background-color: #9b5bfb !important;
-  color: white !important;
-  border-radius: 5px;
-} */
-
 /* === EMOJIS EN HOVER === */
 .EmojiPickerReact .epr-emoji:hover {
   background-color: rgba(255, 255, 255, 0.1) !important;
@@ -276,14 +269,11 @@
   border-radius: 4px;
 }
 
-
 .chat-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
-    margin-bottom: 1em;
-
+  margin-bottom: 1em;
 }
 
 .chat-header h2 {
@@ -301,7 +291,6 @@
   box-shadow: 0 0 10px rgba(192, 57, 43, 0.6);
 }
 
-/* Animación de parpadeo */
 @keyframes blink {
   0%, 100% {
     opacity: 1;
@@ -313,7 +302,6 @@
   }
 }
 
-
 @media (max-width: 600px) {
   .options-menu {
     right: 0;
@@ -322,12 +310,10 @@
     bottom: -50px;
     transform: translateY(100%);
     margin-top: 8px;
-    /* min-width: unset; */
     width: 100%;
     max-width: 180px;
     left: 50%;
     transform: translateX(-50%);
     animation: none;
-
   }
 }

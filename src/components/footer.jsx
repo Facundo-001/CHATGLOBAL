@@ -7,7 +7,7 @@ const Footer = () => {
     <footer
       className="py-5"
       style={{
-        background: 'linear-gradient(135deg, #2a0845, #2f0a74)',
+        background: 'linear-gradient(135deg, #240046, #3a0ca3, #7209b7)',
         color: '#fff',
       }}
     >

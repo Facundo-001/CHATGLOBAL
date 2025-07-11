@@ -1,107 +1,251 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Sigmar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Caprasimo&family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Michroma&family=Orbitron:wght@400..900&family=Permanent+Marker&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sigmar&display=swap');
 
-.LetterHome{
-    font-family: "Sigmar";
+:root {
+  --primary-color: #3a0ca3;
+  --secondary-color: #7209b7;
+  --accent-color: #b5179e;
+  --text-light: #f8f9fa;
+  --text-hover: #ffb703;
+  --bg-dark: #1a1333;
+  --bg-gradient: linear-gradient(135deg, #240046, #3a0ca3, #7209b7);
 }
 
-.textColor{
-    color: #fff;
-    text-shadow: 0 0 10px #fff;
+body, html, .home-wrapper {
+  margin: 0;
+  padding: 0;
+  font-family: 'Orbitron', sans-serif;
+  /* background: #000; */
+  /* color: var(--text-light); */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.textColor:hover{
-    color: #ffee00;
-    text-shadow: 0 0 10px #eeff00;
+.navbar-custom {
+  background: var(--bg-gradient);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.boxhome {
-    position: relative; /* Necesario para posicionar el pseudo-elemento */
-    z-index: 1; /* Asegura que el contenido de la caja esté por encima del fondo */
+.navbar-container {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.boxhome::before {
-    content: ''; /* Necesario para crear el pseudo-elemento */
-    position: absolute; /* Posiciona el pseudo-elemento dentro del contenedor */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, #2a0845, #5a2caf), url('./BGCOOL-removebg-preview.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1; /* Asegura que el fondo esté detrás del contenido */
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-light);
+}
+
+.logo-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  transition: transform 0.5s ease-in-out;
+}
+
+.logo-link:hover .logo-img {
+  transform: rotate(360deg);
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-color); /* Note: There's no --text-color in your :root. Should this be --text-light? */
+  text-shadow:
+    0 0 3px rgba(255, 255, 255, 0.2),
+    0 0 6px rgba(255, 255, 255, 0.3),
+    0 0 8px rgba(255, 183, 3, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.logo-text:hover {
+  color: var(--text-hover);
+  text-shadow:
+    0 0 4px #ffb703aa,
+    0 0 8px #ffb70388,
+    0 0 12px #ffb70355;
+  transform: scale(1.02);
 }
 
 
-.logo-container {
-    display: flex;
-    align-items: center;
-    text-decoration: none; /* Quita el subrayado predeterminado */
-    position: relative;
-    color: inherit; /* Mantiene el color del texto */
-    transition: all 0.3s ease-in-out;
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.8rem;
+  cursor: pointer;
 }
 
-.logo-container img {
-    transition: transform 0.5s ease-in-out;
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
 }
 
-.logo-container:hover img {
-    transform: rotate(360deg);
+.nav-links.show {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-.logo-container span {
-    position: relative;
-    display: inline-block;
-    /* Animación neon en tonos grises */
-    animation: neonBlink 1.5s infinite alternate;
+.nav-item {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: bold;
+  transition: color 0.3s, text-shadow 0.3s;
 }
 
-@keyframes neonBlink {
-    0% {
-        text-shadow: 0 0 3px #aaa, 0 0 6px #aaa;
-        opacity: 0.8;
-    }
-    50% {
-        text-shadow: 0 0 8px #aaa, 0 0 12px #aaa;
-        opacity: 1;
-    }
-    100% {
-        text-shadow: 0 0 3px #aaa, 0 0 6px #aaa;
-        opacity: 0.8;
-    }
+.nav-item:hover {
+  color: var(--text-hover);
+  text-shadow: 0 0 8px var(--text-hover);
 }
 
-.logo-container span::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
+.nav-user {
+  position: relative;
+}
+
+.user-button {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-weight: bold;
+  cursor: pointer;
+  /* padding: 0.5rem 0; Add some padding so the click area is lar/ger */
+}
+
+/* New CSS for dropdown arrow and menu */
+.dropdown-arrow {
+  display: inline-block; /* Allows transformation */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for rotation */
+  margin-left: 5px; /* Space between text and arrow */
+  font-size: 0.8em; /* Make the arrow slightly smaller relative to text */
+}
+
+/* Rotate the arrow when the user menu is open */
+.nav-user .user-button.open .dropdown-arrow {
+  transform: rotate(180deg); /* Rotates 180 degrees when open */
+}
+
+.user-menu {
+  position: absolute;
+  top: 100%; /* Position below the button */
+  right: 0;
+  background: #1a1a1a; /* Using a dark solid color from your current CSS */
+  border: 1px solid #444;
+  padding: 0.5rem 0; /* Changed to match typical dropdowns, padding inside list items */
+  border-radius: 5px;
+  margin-top: 0.3rem;
+  z-index: 10; /* Ensure it's on top */
+  min-width: 150px; /* Give it a minimum width */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Add a subtle shadow */
+}
+
+.user-menu-item {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.user-menu-item:hover {
+  background-color: #333;
+  color: var(--text-hover);
+}
+
+.main-content {
+  flex: 1;
+  background: var(--bg-gradient);
+  /* padding: 2rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Muestra el botón de hamburguesa en pantallas pequeñas */
+  }
+
+  .nav-links {
+    /* Estado inicial del menú: oculto con transición */
+    display: flex; /* Cambiamos a flex para permitir transiciones de altura */
     width: 100%;
-    height: 2px;
-    background-color: #aaa; /* Línea inferior en gris */
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease-in-out;
+    flex-direction: row;
+    align-items: flex-start;
+    overflow: hidden; /* Esconde el contenido que excede el max-height */
+    max-height: 0; /* Menú cerrado, altura colapsada */
+    opacity: 0; /* Menú invisible */
+    padding-top: 0; /* Sin padding arriba al inicio */
+    /* Añadimos la transición para una apertura y cierre suaves */
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding-top 0.5s ease-in-out;
+  }
+
+  .nav-links.show {
+    /* Estado final del menú: abierto con animación */
+    max-height: 300px; /* Una altura suficientemente grande para mostrar todo el contenido del menú */
+    opacity: 1; /* Menú completamente visible */
+    padding-top: 1rem; /* Restaura el padding superior */
+  }
+
+  /* Añade un pequeño margen entre los elementos del menú en modo móvil */
+  .nav-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-links li:last-child {
+    margin-bottom: 0; /* No hay margen inferior en el último elemento */
+  }
+
+  .navbar-container {
+    /* flex-direction: column; */ /* Descomenta si prefieres que la barra de navegación se apile completamente */
+    align-items: flex-start; /* Alinea los elementos al inicio */
+  }
+
+  /* .main-content {
+    padding: 1rem;
+  } */
+
+  .user-menu {
+    left: 0; /* Alinea el menú de usuario a la izquierda en pantallas pequeñas */
+    right: auto;
+    position: relative;
+  }
+
+  .logo-text {
+    font-size: 1.25rem; /* Ajusta el tamaño del texto del logo para móviles */
+  }
 }
 
-/* Al pasar el cursor, se estabiliza el efecto neon y se muestra la línea */
-.logo-container:hover span {
-    animation: none;
-    text-shadow: 0 0 10px #aaa, 0 0 15px #aaa;
-}
-
-.logo-container:hover span::after {
-    transform: scaleX(1);
-}
-
-@media (min-width: 1400px) {
-    .logo-img{
-        /* Intentando cambiar el tamaño del logo */
-        width: 3rem;
-    }
-    .logo-container{
-        /* NADA POR AHORA */
-    }
+/* Estilos para escritorios: asegúrate de que el menú siempre esté visible y sin transiciones aquí */
+@media (min-width: 769px) {
+  .nav-links {
+    display: flex; /* Siempre visible y en fila en escritorios */
+    max-height: none; /* Sin límite de altura para escritorios */
+    opacity: 1; /* Completamente visible */
+    transition: none; /* Desactiva las transiciones en escritorio */
+    padding-top: 0; /* Sin padding arriba */
+    flex-direction: row; /* Asegura que estén en fila */
+  }
 }
